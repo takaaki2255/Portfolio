@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'COOLMEMOS') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -22,8 +22,14 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'COOKMEMO') }}
                 </a>
+                <a class="navbar-brand" href="{{ url('/portfolio')}}">
+                         {{ config('app.twoname', 'RECIPE') }}
+                    </a>
+                    <a class="navbar-brand" href="{{ url('/profile')}}">
+                         {{ config('app.thirdname', 'PROFILE') }}
+                    </a>
                 <button class="navbar-toggler" type="button" 
                 data-bs-toggle="collapse" 
                 data-bs-target="#navbarSupportedContent" 

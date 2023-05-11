@@ -20,17 +20,21 @@ Route::get('/', function () {
 });
 
 // PortfolioControllerとportfolio/createのルーティング
-Route::controller(PortfolioController::class) ->prefix('admin')
-                                              ->group(function() {
-    Route::get('portfolio/create', 'add');
+Route::controller(PortfolioController::class) ->prefix('admin') ->name('admin.')
+ ->middleware('auth')->group(function () {
+    Route::get('portfolio/create', 'add') ->name('portfolio.auth');
+    Route::post('portfolio/creata', 'create') ->name('portfolio.create');
 });
 
-// ProfileControllerとportfolio/createのルーティング
-Route::controller(ProfileController::class) ->prefix('admin')
-                                            ->group(function() {
-    Route::get('profile/create', 'add');
+
+// ProfileControllerとprofile/createのルーティング
+Route::controller(ProfileController::class) ->prefix('admin')->name('admin.')
+ ->middleware('auth')->group(function() {
+    Route::get('profile/create', 'add') ->name('profile.auth');
+    Route::post('profile/create', 'create') ->name('profile.create');
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 
+            'index'])->name('home');

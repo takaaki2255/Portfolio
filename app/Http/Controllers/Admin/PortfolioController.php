@@ -12,4 +12,9 @@ class PortfolioController extends Controller
     {
         return view('admin.portfolio.create');
     }
+    public function create(Request $request)
+    {
+        // admin/news/createにリダイレクトする
+        return redirect('admin/portfolio/create');
+    }    
 }
