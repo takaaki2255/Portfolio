@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\PortfolioController as PublicPortfolioController;
+use App\Http\Controllers\ProfileController as PublicProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +27,9 @@ Route::controller(PortfolioController::class) ->prefix('admin') ->name('admin.')
     Route::get('portfolio/create', 'add') ->name('portfolio.add');
     Route::post('portfolio/create', 'create') ->name('portfolio.create');
     Route::get('portfolio', 'index')->name('portfolio.index');
+    Route::get('portfolio/edit', 'edit')->name('portfolio.edit');
+    Route::post('portfolio/edit', 'update')->name('portfolio.update');
+    Route::get('portfolio/delete', 'delete')->name('portfolio.delete');
 });
 
 
@@ -34,9 +39,15 @@ Route::controller(ProfileController::class) ->prefix('admin')->name('admin.')
     Route::get('profile/create', 'add') ->name('profile.add');
     Route::post('profile/create', 'create') ->name('profile.create');
     Route::get('profile', 'indexs') ->name('profile.indexs');
+    Route::get('profile/edit', 'edit')->name('profile.edit');
+    Route::post('profile/edit', 'update')->name('profile.update');
+    Route::get('profile/delete', 'delete')->name('profile.delete');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 
             'index'])->name('home');
+
+Route::get('/portfolio', [PublicPortfolioController::class, 'index'])->name('portfolio.index');
+Route::get('/profile', [PublicProfileController::class, 'index'])->name('profile.index');

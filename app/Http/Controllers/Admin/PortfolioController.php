@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Portfolio;
+use App\Models\History;
+use Carbon\Carbon;
 
 class PortfolioController extends Controller
 {
@@ -53,5 +55,59 @@ class PortfolioController extends Controller
             $posts = Portfolio::all();
         }
         return view('admin.portfolio.index', ['posts' => $posts, 'dish_name' => $dish_name]);
+    }
+    
+    public function edit(Request $request)
+    {
+        // News Modelからデータを取得する
+        $portfilo = Portfolio::find($request->id);
+        if (empty($portfilo)) {
+            abort(404);
+        }
+        return view('admin.portfolio.edit', ['portfolio_form' => $portfilo]);
+    }
+
+    public function update(Request $request)
+    {
+        // Validationをかける
+        $this->validate($request, Portfolio::$rules);
+        // News Modelからデータを取得する
+        $portfolio = Portfolio::find($request->id);
+        // 送信されてきたフォームデータを格納する
+        $portfolio_form = $request->all();
+        
+        if ($request->remove == 'true') {
+            $_form['image_path'] = null;
+        } elseif ($request->file('image')) {
+            $path = $request->file('image')->store('public/image');
+            $portfolio_form['image_path'] = basename($path);
+        } else {
+            $portfolio_form['image_path'] = $portfolio->image_path;
+        }
+
+        unset($portfolio_form['image']);
+        unset($portfolio_form['remove']);
+        unset($portfolio_form['_token']);
+
+        // 該当するデータを上書きして保存する
+        $portfolio->fill($portfolio_form)->save();
+        
+        $history = new History();
+        $history->portfolio_id = $portfolio->id;
+        $history->edited_at = Carbon::now();
+        $history->save();
+
+        return redirect('admin/portfolio');
+    }
+    
+    public function delete(Request $request)
+    {
+        // 該当するNews Modelを取得
+        $portfolio = Portfolio::find($request->id);
+
+        // 削除する
+        $portfolio->delete();
+
+        return redirect('admin/portfolio/');
     }
 }

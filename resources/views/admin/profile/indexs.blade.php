@@ -33,6 +33,14 @@
                                   <td>{{ Str::limit($profile->age, 5) }}</td>
                                   <td>{{ Str::limit($profile->skill, 100) }}</td>
                                   <td>{{ Str::limit($profile->career, 150) }}</td>
+                                  <td>
+                                      <div>
+                                        <a href="{{ route('admin.profile.edit', ['id' => $profile->id]) }}">編集</a>
+                                      </div>
+                                      <div>
+                                            <a href="{{ route('admin.profile.delete', ['id' => $profile->id]) }}">削除</a>
+                                        </div>
+                                  </td>
                                 </tr>
                             @endforeach
                         </tbody>

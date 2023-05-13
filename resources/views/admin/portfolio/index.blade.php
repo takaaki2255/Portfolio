@@ -44,6 +44,14 @@
                                     <td>{{ Str::limit($portfolio->dish_name, 50) }}</td>
                                     <td>{{ Str::limit($portfolio->material, 100) }}</td>
                                     <td>{{ Str::limit($portfolio->recipe, 250) }}</td>
+                                    <td>
+                                        <div>
+                                            <a href="{{ route('admin.portfolio.edit', ['id' => $portfolio->id]) }}">編集</a>
+                                        </div>
+                                        <div>
+                                            <a href="{{ route('admin.portfolio.delete', ['id' => $portfolio->id]) }}">削除</a>
+                                        </div>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
