@@ -20,10 +20,6 @@ body {
   color: #000 !important;
 }
 
-.table-dark {
-  color: #000;
-}
-
 .list-group-item {
   border-color: #000;
   background-color: #FF8856;
@@ -59,4 +55,8 @@ background-color: rgba(0, 0, 0, 0.05);
 .card-body {
   background-color: rgba(0, 0, 0, 0.05);
   background-color: #FF8856;
+}
+
+.btn-primary {
+  margin-bottom: 10px;
 }
