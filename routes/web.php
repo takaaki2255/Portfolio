@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\PortfolioController as PublicPortfolioController;
 use App\Http\Controllers\ProfileController as PublicProfileController;
+use App\Http\Controllers\WelcomeController as PublicWelcomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,3 +52,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class,
 
 Route::get('/portfolio', [PublicPortfolioController::class, 'index'])->name('portfolio.index');
 Route::get('/profile', [PublicProfileController::class, 'index'])->name('profile.index');
+Route::get('/', [PublicWelcomeController::class, 'index'])->name('welcome.index');
