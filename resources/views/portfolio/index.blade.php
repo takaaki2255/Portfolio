@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="container">
-        <hr color="#c0c0c0">
+        <div class="titles text-left h1 col-md-10 mx-auto">RECLPE</div>
+        {{--
         @if (!is_null($headline))
             <div class="row">
                 <div class="headline col-md-10 mx-auto">
@@ -29,6 +30,7 @@
                 </div>
             </div>
         @endif
+         --}}
         <hr color="#c0c0c0">
         <div class="row">
             <div class="posts col-md-8 mx-auto mt-3">

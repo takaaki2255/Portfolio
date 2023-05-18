@@ -1,37 +1,26 @@
 @extends('layouts.front')
 
 @section('content')
-    <div class="container">
+    <div class="container ">
+        <div class="titles text-left h1 col-md-10 mx-auto">PROFILE</div>
         <hr color="#c0c0c0">
-        @if (!is_null($headline))
-            <div class="row">
-                <div class="headline col-md-10 mx-auto">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="caption mx-auto">
-                                <div class="image">
-                                    @if ($headline->image_path)
-                                        <img src="{{ secure_asset('storage/image/' . $headline->image_path) }}">
-                                    @endif
-                                </div>
-                                <div class="title p-2">
-                                    <h1>{{ Str::limit($headline->name, 15) }}</h1>
-                                </div>
-                                <div class="title p-2">
-                                    <h1>{{ Str::limit($headline->age, 6) }}</h1>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <p class="body mx-auto">{{ Str::limit($headline->skill, 200) }}</p>
-                        </div>
-                        <div class="col-md-6">
-                            <p class="body mx-auto">{{ Str::limit($headline->career, 650) }}</p>
-                        </div>
-                    </div>
+        <div class="main col-md-10 mx-auto">
+            <div class="common">
+                <div　class=text-left>氏名</div>
+                <div class="primary h2">
+                    {{ $profile->name }}
                 </div>
+                <div>年齢</div>
+                <div class="primary h2">
+                    {{ $profile->age }}
+                </div>
+                <div class="">スキル</div>
+                <p class="secondary h5">{{ $profile->skill }}</p>
+                <div class="">経歴</div>
+                <p class="secondary h5">{{ $profile->career }}</p>
             </div>
-        @endif
+        </div>
+        {{--
         <hr color="#c0c0c0">
         <div class="row">
             <div class="posts col-md-8 mx-auto mt-3">
@@ -42,23 +31,18 @@
                                 <div class="date">
                                     {{ $post->updated_at->format('Y年m月d日') }}
                                 </div>
-                                <div class="title">
+                                <div class="primary">
                                     {{ Str::limit($post->name, 15) }}
                                 </div>
-                                <div class="title">
+                                <div class="primary">
                                     {{ Str::limit($post->age, 6) }}
                                 </div>
-                                <div class="body mt-3">
+                                <div class="secondary mt-3">
                                     {{ Str::limit($post->skill, 400) }}
                                 </div>
-                                <div class="body mt-3">
+                                <div class="secondary mt-3">
                                     {{ Str::limit($post->career, 1300) }}
                                 </div>
-                            </div>
-                            <div class="image col-md-6 text-right mt-4">
-                                @if ($post->image_path)
-                                    <img src="{{ secure_asset('storage/image/' . $post->image_path) }}">
-                                @endif
                             </div>
                         </div>
                     </div>
@@ -66,6 +50,6 @@
                 @endforeach
             </div>
         </div>
-    </div>
+        --}}
     </div>
 @endsection

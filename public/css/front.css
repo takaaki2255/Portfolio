@@ -1,7 +1,7 @@
 body {
-  background-repeat: no-repeat;
-  background-position: center;
+  background-repeat: repeat;
   background-color:#fff;
+  background-image: url(/storage/recipe_images/background.png);
   color: #000;
 }
 
@@ -62,4 +62,13 @@ body {
 }
 .posts .post .image img {
   width: 250px;
+}
+
+.main {
+  font-family: HiraMinProN-W6;
+}
+
+.titles {
+  font-family: Impact;
+  font-size: 300%;
 }
