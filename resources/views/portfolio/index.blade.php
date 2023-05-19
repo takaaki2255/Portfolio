@@ -38,7 +38,7 @@
                     <div class="post">
                         <div class="row">
                             <div class="text col-md-6">
-                                <div class="date">
+                                <div class="date" style="color:black">
                                     {{ $post->updated_at->format('Y年m月d日') }}
                                 </div>
                                 <div class="title">
