@@ -15,6 +15,8 @@
                     @endif
 
                     {{ __('messages.You are logged in!') }}
+                    <a href="{{url('/admin/portfolio')}}">portfolio</a>
+                    <a href="{{url('/admin/profile')}}">profile</a>
                 </div>
             </div>
         </div>

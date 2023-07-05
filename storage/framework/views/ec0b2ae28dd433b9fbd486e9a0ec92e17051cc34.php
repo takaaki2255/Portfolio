@@ -1,15 +1,15 @@
 <?php $__env->startSection('content'); ?>
 <div class="top">
      <div class="top-brand">
-          <h2 class="top-title" style="font-size:1000%;">
+          <h2 class="top-title" style="font-size:10vw;">
                <?php echo e(config('app.name', 'C00KMEMOS')); ?>
 
           </h2>
-          <a class="button" style="font-size:300%;" href="<?php echo e(url('/portfolio')); ?>">
+          <a class="button" style="font-size:5vw;" href="<?php echo e(url('/portfolio')); ?>">
                <?php echo e(config('app.twoname', 'RECIPE')); ?>
 
           </a>
-          <a class="button" style="font-size:300%;" href="<?php echo e(url('/profile')); ?>">
+          <a class="button" style="font-size:5vw;" href="<?php echo e(url('/profile')); ?>">
                <?php echo e(config('app.thirdname', 'PROFILE')); ?>
 
           </a>

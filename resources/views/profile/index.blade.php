@@ -1,7 +1,8 @@
 @extends('layouts.front')
+@section('title', 'プロフィール')
 
 @section('content')
-    <div class="container ">
+    <div class="container">
         <div class="titles text-left h1 col-md-10 mx-auto">PROFILE</div>
         <hr color="#c0c0c0">
         <div class="main col-md-10 mx-auto">

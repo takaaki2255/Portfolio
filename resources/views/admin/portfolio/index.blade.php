@@ -5,6 +5,7 @@
     <div class="container">
         <div class="row">
             <h2>投稿レシピ一覧</h2>
+            <a href="{{url('/admin/profile')}}">プロフィール編集画面へ</a>
         </div>
         <div class="row">
             <div class="col-md-4">

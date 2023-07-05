@@ -1,8 +1,9 @@
 @extends('layouts.front')
+@section('title', 'レシピ一覧')
 
 @section('content')
     <div class="container">
-        <div class="titles text-left h1 col-md-10 mx-auto">RECLPE</div>
+        <div class="titles text-left h1 col-md-10 mx-auto">RECIPE</div>
         {{--
         @if (!is_null($headline))
             <div class="row">
@@ -53,7 +54,8 @@
                             </div>
                             <div class="image col-md-6 text-right mt-4">
                                 @if ($post->image_path)
-                                    <img src="{{ secure_asset('storage/image/' . $post->image_path) }}">
+                                    <img src="{{ secure_asset('storage/image/'.
+                                    $post->image_path) }}">
                                 @endif
                             </div>
                         </div>

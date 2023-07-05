@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Portfolio;
 use App\Models\History;
 use Carbon\Carbon;
@@ -24,7 +25,7 @@ class PortfolioController extends Controller
         $portfolio = new Portfolio;
         $form = $request->all();
 
-        // フォームから画像が送信されてきたら、保存して、$news->image_path に画像のパスを保存する
+        // フォームから画像が送信されてきたら、保存して、$portfolio->image_path に画像のパスを保存する
         if (isset($form['image'])) {
             $path = $request->file('image')->store('public/image');
             $portfolio->image_path = basename($path);
@@ -51,7 +52,7 @@ class PortfolioController extends Controller
             // 検索されたら検索結果を取得する
             $posts = Portfolio::where('dish_name', $cdish_name)->get();
         } else {
-            // それ以外はすべてのニュースを取得する
+            // それ以外はすべてのレシピを取得する
             $posts = Portfolio::all();
         }
         return view('admin.portfolio.index', ['posts' => $posts, 'dish_name' => $dish_name]);
@@ -70,7 +71,7 @@ class PortfolioController extends Controller
     public function update(Request $request)
     {
         // Validationをかける
-        $this->validate($request, Portfolio::$rules);
+        $this->validate($request, Portfolio::$rules, ['file' => 'required |file'] );
         // News Modelからデータを取得する
         $portfolio = Portfolio::find($request->id);
         // 送信されてきたフォームデータを格納する
@@ -79,11 +80,13 @@ class PortfolioController extends Controller
         if ($request->remove == 'true') {
             $_form['image_path'] = null;
         } elseif ($request->file('image')) {
-            $path = $request->file('image')->store('public/image');
+            // $path = $request->file('image')->store('public/image');
+            $path = Storage::disk('s3')->put('/', $portfolio_form['image'], 'public');
             $portfolio_form['image_path'] = basename($path);
         } else {
             $portfolio_form['image_path'] = $portfolio->image_path;
         }
+        
 
         unset($portfolio_form['image']);
         unset($portfolio_form['remove']);

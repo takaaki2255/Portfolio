@@ -4,7 +4,8 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <h2>Myプロフィール</h2></h2>
+            <h2>Myプロフィール</h2>
+            <a href="{{url('/admin/portfolio')}}">レシピ編集画面へ</a>
         </div>
         <div class="row">
             <div class="col-md-4">

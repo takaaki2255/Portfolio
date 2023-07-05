@@ -53,3 +53,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class,
 Route::get('/portfolio', [PublicPortfolioController::class, 'index'])->name('portfolio.index');
 Route::get('/profile', [PublicProfileController::class, 'index'])->name('profile.index');
 Route::get('/', [PublicWelcomeController::class, 'index'])->name('welcome.index');
+
+Route::view('upload', 'upload');
+Route::post('s3', [\App\Http\Controllers\S3Controller::class, 'uploadS3'])->name('s3');
