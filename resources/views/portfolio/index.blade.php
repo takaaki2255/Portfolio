@@ -1,5 +1,5 @@
 @extends('layouts.front')
-@section('title', 'レシピ一覧')
+@section('title', 'COOKMEMOS-レシピ一覧')
 
 @section('content')
     <div class="container">
